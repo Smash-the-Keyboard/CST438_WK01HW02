@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
                 if (username.equals("din_djarin") && password.equals("baby_yoda_ftw")) {
                     // Login successful
                     Intent intent = ListPostsActivity.getIntent(getApplicationContext());
+                    intent.putExtra("user_id", 1);
+                    intent.putExtra("username", username);
                     startActivity(intent);
                 }
                 else {

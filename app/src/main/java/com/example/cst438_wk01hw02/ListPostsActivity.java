@@ -25,7 +25,7 @@ public class ListPostsActivity extends AppCompatActivity {
         return intent;
     }
 
-    private TextView textViewResult;
+    private TextView textViewResult, textViewWelcome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,13 @@ public class ListPostsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_posts);
 
         textViewResult = findViewById(R.id.text_view_result);
+
+        textViewWelcome = findViewById(R.id.welcome_message);
+
+        String username = getIntent().getStringExtra("username");
+        int userId =  getIntent().getIntExtra("user_id", 1);
+
+        textViewWelcome.setText("Welcome, " + username + " (user id " + userId + ")");
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://jsonplaceholder.typicode.com/")
