@@ -22,6 +22,7 @@ public class ListPostsActivity extends AppCompatActivity {
 
     public static Intent getIntent(Context context) {
         Intent intent = new Intent(context, ListPostsActivity.class);
+        intent.putExtra("activity_name", ".ListPostsActivity");
         return intent;
     }
 
