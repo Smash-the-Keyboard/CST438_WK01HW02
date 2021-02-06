@@ -58,24 +58,34 @@ public class MainActivity extends AppCompatActivity {
                 String username = editTextUsername.getText().toString();
                 String password = editTextPassword.getText().toString();
                 // Validate credentials
-                if (username.equals("din_djarin") && password.equals("baby_yoda_ftw")) {
+                boolean validUsername = verifyUsername(username);
+                boolean validPassword = verifyPassword(password);
+                if (validUsername && validPassword) {
                     // Login successful
                     Intent intent = ListPostsActivity.getIntent(getApplicationContext());
                     intent.putExtra("user_id", 1);
                     intent.putExtra("username", username);
                     startActivity(intent);
                 }
-                if (!username.equals("din_djarin")) {
+                if (!validUsername) {
                     // Login failed - incorrect username
                     editTextUsername.setBackgroundColor(Color.parseColor("#FCD1D1"));
                     ((TextView)findViewById(R.id.incorrect_username_message)).setText("Incorrect Username");
                 }
-                if (!password.equals("baby_yoda_ftw")) {
+                if (!validPassword) {
                     // Login failed - incorrect password
                     editTextPassword.setBackgroundColor(Color.parseColor("#FCD1D1"));
                     ((TextView)findViewById(R.id.incorrect_password_message)).setText("Incorrect Password");
                 }
             }
         });
+    }
+
+    protected boolean verifyUsername(String username) {
+        return username.equals("din_djarin");
+    }
+
+    protected boolean verifyPassword(String password) {
+        return password.equals("baby_yoda_ftw");
     }
 }
