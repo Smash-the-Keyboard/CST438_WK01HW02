@@ -59,12 +59,14 @@ public class ListPostsActivity extends AppCompatActivity {
                 }
                 List<Post> posts = response.body();
                 for (Post post : posts) {
-                    String content = "";
-                    content += "ID: " + post.getId() + "\n";
-                    content += "User ID: " + post.getUserId() + "\n";
-                    content += "Title: " + post.getTitle() + "\n";
-                    content += "Body: " + post.getText() + "\n\n";
-                    textViewResult.append(content);
+                    if (post.getUserId() == userId) {
+                        String content = "";
+                        content += "ID: " + post.getId() + "\n";
+                        content += "User ID: " + post.getUserId() + "\n";
+                        content += "Title: " + post.getTitle() + "\n";
+                        content += "Body: " + post.getText() + "\n\n";
+                        textViewResult.append(content);
+                    }
                 }
             }
             @Override
